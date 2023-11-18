@@ -43,7 +43,8 @@ export const entrySlice = createSlice({
             ? exclusions
             : {
                 ...exclusions,
-                [participant]: state.exclusions[participant].filter((excluded) => excluded !== participant),
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                [participant]: state.exclusions[participant]!.filter((excluded) => excluded !== participant),
               },
         {},
       );
