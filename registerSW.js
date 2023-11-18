@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/secret-santa-pwa/sw.js', { scope: '/secret-santa-pwa/' })})}
