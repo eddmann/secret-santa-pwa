@@ -16,9 +16,11 @@ type Props = {
 // eslint-disable-next-line react-refresh/only-export-components
 const RequestPermission = styled.div`
   position: absolute;
-  inset: auto ${({ theme }) => theme.spacing.padding.m} ${({ theme }) => theme.spacing.padding.m} auto;
+  inset: auto max(${({ theme }) => theme.spacing.padding.m} + env(safe-area-inset-right))
+    max(${({ theme }) => theme.spacing.padding.m} + env(safe-area-inset-bottom)) auto;
   color: ${({ theme }) => theme.colors.text};
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 
   svg {
     height: 1.5rem;

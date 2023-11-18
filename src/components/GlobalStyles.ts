@@ -31,6 +31,18 @@ const GlobalStyles = createGlobalStyle`
   body.lock {
     touch-action: none;
   }
+
+  @media (width < 800px) and (orientation: landscape) {
+    html {
+      transform: rotate(-90deg);
+      transform-origin: left top;
+      width: 100vh;
+      overflow-x: hidden;
+      position: absolute;
+      top: 100%;
+      left: 0;
+    }
+  }
 `;
 
 export default GlobalStyles;
