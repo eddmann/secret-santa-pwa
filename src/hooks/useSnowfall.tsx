@@ -1,5 +1,7 @@
 import { ReactNode, useEffect, useMemo, useState } from 'react';
 import Snowfall from 'react-snowfall';
+import styled from 'styled-components';
+import MobileIcon from '../assets/mobile.svg?react';
 
 type DeviceOrientationEventiOS = DeviceOrientationEvent & {
   requestPermission: () => Promise<'granted' | 'denied'>;
@@ -11,12 +13,34 @@ type Props = {
   wind: { start: [min: number, max: number]; max: [min: number, max: number] };
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
+const RequestPermission = styled.div`
+  position: absolute;
+  inset: auto ${({ theme }) => theme.spacing.padding.m} ${({ theme }) => theme.spacing.padding.m} auto;
+  color: ${({ theme }) => theme.colors.text};
+  cursor: pointer;
+
+  svg {
+    height: 1.5rem;
+  }
+`;
+
 export const useSnowfall = (initial: Props): ReactNode => {
   const [snowflakes, setSnowflakes] = useState(initial.snowflakes.start);
   const [speed, setSpeed] = useState(initial.speed.start);
   const [wind, setWind] = useState(initial.speed.start);
+  const [isIOSPermissionRequired, setIsIOSPermissionRequired] = useState('requestPermission' in DeviceMotionEvent);
+
+  const requestIOSPermission = async () => {
+    await (DeviceMotionEvent as unknown as DeviceOrientationEventiOS).requestPermission();
+    setIsIOSPermissionRequired(false);
+  };
 
   useEffect(() => {
+    if (isIOSPermissionRequired) {
+      return;
+    }
+
     let x1 = 0,
       y1 = 0,
       z1 = 0;
@@ -47,22 +71,29 @@ export const useSnowfall = (initial: Props): ReactNode => {
       z2 = z1;
     }, 150);
 
-    if ('requestPermission' in DeviceMotionEvent) {
-      void (DeviceMotionEvent as unknown as DeviceOrientationEventiOS).requestPermission().then(() => {
-        window.addEventListener('devicemotion', handle);
-      });
-    } else {
-      window.addEventListener('devicemotion', handle);
-    }
+    window.addEventListener('devicemotion', handle);
 
     return () => {
       window.removeEventListener('devicemotion', handle);
       clearInterval(interval);
     };
-  }, [initial]);
+  }, [initial, isIOSPermissionRequired]);
 
   return useMemo(
-    () => <Snowfall color="#FFFFFF" snowflakeCount={snowflakes} speed={speed} wind={wind} />,
-    [snowflakes, speed, wind],
+    () => (
+      <>
+        <Snowfall color="#FFFFFF" snowflakeCount={snowflakes} speed={speed} wind={wind} />
+        {isIOSPermissionRequired && (
+          <RequestPermission
+            onClick={() => {
+              void requestIOSPermission();
+            }}
+          >
+            <MobileIcon />
+          </RequestPermission>
+        )}
+      </>
+    ),
+    [snowflakes, speed, wind, isIOSPermissionRequired],
   );
 };
