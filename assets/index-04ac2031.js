@@ -328,7 +328,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     transform: translateY(200px);
   }
   to {
-    transform: translateY(50px);
+    transform: translateY(65px);
   }
 `,_g=pl`
   from {
@@ -339,17 +339,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
 `,$g=U.h1`
   margin: 2rem auto 0;
-  width: 13rem;
+  height: 15vh;
 
   img {
-    width: 100%;
+    height: 100%;
   }
 `,bg=U.div`
   position: fixed;
   inset: auto 0 0;
   display: flex;
   justify-content: center;
-  transform: translateY(50px);
+  transform: translateY(65px);
   animation: ${zg} 1s ease;
 `,jg=U(yh)`
   height: 50vh;
