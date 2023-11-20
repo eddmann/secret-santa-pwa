@@ -11,7 +11,7 @@ const slideUp = keyframes`
     transform: translateY(200px);
   }
   to {
-    transform: translateY(50px);
+    transform: translateY(65px);
   }
 `;
 
@@ -26,10 +26,10 @@ const slideDown = keyframes`
 
 const Title = styled.h1`
   margin: 2rem auto 0;
-  width: 13rem;
+  height: 15vh;
 
   img {
-    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -38,7 +38,7 @@ const SantaRoot = styled.div`
   inset: auto 0 0;
   display: flex;
   justify-content: center;
-  transform: translateY(50px);
+  transform: translateY(65px);
   animation: ${slideUp} 1s ease;
 `;
 
