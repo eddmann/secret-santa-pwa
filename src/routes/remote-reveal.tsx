@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { RemoteReveal as RemoteRevealType } from '../types';
 import { useNavigate, useParams } from 'react-router-dom';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import HomeIcon from '../assets/home.svg?react';
 import { Content } from '../components/Content';
 import { Header } from '../components/Header';
@@ -9,8 +9,8 @@ import { FooterAction } from '../components/FooterAction';
 import { Description } from '../components/Description';
 import { useRemoteReveal } from '../hooks/useRemoteReveal';
 import { REMOTE_REVEAL_WRAPPED_PASSWORD } from '../env';
-import SantaVector from '../assets/santa.svg?react';
 import Snowfall from 'react-snowfall';
+import { SantaPopup } from '../components/SantaPopup';
 
 const Name = styled.div`
   font-size: ${({ theme }) => theme.typography.size.l};
@@ -32,28 +32,6 @@ const Result = styled.div`
   flex-direction: column;
   align-items: center;
   gap: ${({ theme }) => theme.spacing.padding.l};
-`;
-
-const slideUp = keyframes`
-  from {
-    transform: translateY(200px);
-  }
-  to {
-    transform: translateY(50px);
-  }
-`;
-
-const SantaRoot = styled.div`
-  position: fixed;
-  inset: auto 0 0;
-  display: flex;
-  justify-content: center;
-  transform: translateY(50px);
-  animation: ${slideUp} 1s ease;
-`;
-
-const Santa = styled(SantaVector)`
-  height: 50vh;
 `;
 
 const UnwrappingIndicator = styled.div`
@@ -114,9 +92,7 @@ export const RemoteReveal = () => {
       )}
       {isRevealed && (
         <>
-          <SantaRoot>
-            <Santa />
-          </SantaRoot>
+          <SantaPopup />
           <Snowfall />
         </>
       )}

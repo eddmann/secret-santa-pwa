@@ -3,17 +3,8 @@ import { useAppDispatch } from '../store/hooks';
 import { startLocalDraw, startRemoteDraw } from '../store/entry';
 import { Button } from '../components/Button';
 import styled, { keyframes } from 'styled-components';
-import SantaVector from '../assets/santa.svg?react';
 import { useSnowfall } from '../hooks/useSnowfall';
-
-const slideUp = keyframes`
-  from {
-    transform: translateY(200px);
-  }
-  to {
-    transform: translateY(65px);
-  }
-`;
+import { SantaPopup } from '../components/SantaPopup';
 
 const slideDown = keyframes`
   from {
@@ -25,25 +16,12 @@ const slideDown = keyframes`
 `;
 
 const Title = styled.h1`
-  margin: 2rem auto 0;
+  margin: 2rem auto 1rem;
   height: 15vh;
 
   img {
     height: 100%;
   }
-`;
-
-const SantaRoot = styled.div`
-  position: fixed;
-  inset: auto 0 0;
-  display: flex;
-  justify-content: center;
-  transform: translateY(65px);
-  animation: ${slideUp} 1s ease;
-`;
-
-const Santa = styled(SantaVector)`
-  height: 50vh;
 `;
 
 const NavigationRoot = styled.div`
@@ -110,9 +88,7 @@ export const Home = () => {
           }}
         />
       </NavigationRoot>
-      <SantaRoot>
-        <Santa />
-      </SantaRoot>
+      <SantaPopup />
       {Snowfall}
     </>
   );
