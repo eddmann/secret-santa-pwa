@@ -53,6 +53,8 @@ export const RemoteDraw = ({ draw }: Props) => {
         ),
       );
     })();
+
+    console.log(draw);
   }, [draw, wrap]);
 
   return (
