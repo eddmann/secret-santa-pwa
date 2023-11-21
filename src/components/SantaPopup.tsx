@@ -21,6 +21,7 @@ const Root = styled.div`
 
 const Santa = styled(SantaVector)`
   height: 50vh;
+  max-height: 750px;
 `;
 
 export const SantaPopup = () => (

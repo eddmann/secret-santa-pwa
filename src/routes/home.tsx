@@ -18,6 +18,7 @@ const slideDown = keyframes`
 const Title = styled.h1`
   margin: 2rem auto 1rem;
   height: 20vh;
+  max-height: 250px;
 
   img {
     height: 100%;
