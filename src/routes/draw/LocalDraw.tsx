@@ -113,7 +113,7 @@ export const LocalDraw = ({ draw }: Props) => {
             setPosition(position + 1);
             setIsRevealed(false);
           }}
-          title="Memoized"
+          title="Memorised"
         />
       )}
     </>
