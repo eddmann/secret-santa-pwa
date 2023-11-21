@@ -10,7 +10,7 @@ const Root = styled.div`
     ${({ theme }) => theme.spacing.padding.s} ${({ theme }) => theme.spacing.padding.m};
   background-color: ${({ theme }) => theme.colors.background};
   max-width: 600px;
-  margin: 0 auto;
+  margin: env(safe-area-inset-top) auto 0;
 
   &::after {
     content: '';
