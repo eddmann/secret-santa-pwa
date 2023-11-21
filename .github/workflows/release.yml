@@ -22,7 +22,7 @@ jobs:
       - run: |
           npm ci
           npm run lint
-          VITE_REMOTE_REVEAL_WRAPPED_PASSWORD="santa" VITE_REMOTE_REVEAL_URL_TEMPLATE="https://eddmann.com/secret-santa-pwa/#/reveal/{wrapped}" npm run build
+          BASE_PUBLIC_PATH="/secret-santa-pwa/" VITE_REMOTE_REVEAL_WRAPPED_PASSWORD="santa" VITE_REMOTE_REVEAL_URL_TEMPLATE="https://eddmann.com/secret-santa-pwa/#/reveal/{wrapped}" npm run build
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
