@@ -22,7 +22,7 @@ export default defineConfig({
       manifest: {
         name: 'Secret Santa',
         short_name: 'Secret Santa',
-        description: 'Carry out local and remote Secret Santa draws for friends and family',
+        description: 'Carry out local and remote Secret Santa draws with your friends and family',
         theme_color: '#CA052C',
         display: 'standalone',
         orientation: 'portrait',
