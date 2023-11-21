@@ -339,6 +339,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   animation: ${_g} 1s ease;
 `,bg=B(zg)`
   height: 50vh;
+  max-height: 750px;
 `,yh=()=>P.jsx($g,{children:P.jsx(bg,{})}),jg=Pi`
   from {
     transform: translateY(-200px);
@@ -349,6 +350,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 `,Tg=B.h1`
   margin: 2rem auto 1rem;
   height: 20vh;
+  max-height: 250px;
 
   img {
     height: 100%;
