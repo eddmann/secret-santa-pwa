@@ -492,6 +492,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   flex: 1;
   color: ${({theme:e})=>e.colors.text};
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 
   span {
     opacity: 0.5;
