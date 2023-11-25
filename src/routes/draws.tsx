@@ -17,6 +17,7 @@ const Title = styled(Link)`
   flex: 1;
   color: ${({ theme }) => theme.colors.text};
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 
   span {
     opacity: 0.5;
